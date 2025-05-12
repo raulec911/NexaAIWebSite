@@ -90,7 +90,14 @@ export default function NexaAIWebsite() {
             <header className="header">
                 <img src="logo.png" alt="NexaAI Logo" className="logo" />
                 <p className="subtitle">Impulsando decisiones inteligentes</p>
-                <button className="main-button">Descubre Nuestros Servicios</button>
+                <button className="main-button" onClick={() => {
+                    const cardsSection = document.getElementById("services-section");
+                    if (cardsSection) {
+                        cardsSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                }}>
+    Descubre Nuestros Servicios
+</button>
             </header>
             {selectedService ? (
                 <div className="details-container">
@@ -104,7 +111,7 @@ export default function NexaAIWebsite() {
                     <button className="back-button" onClick={handleGoBack}>Volver</button>
                 </div>
             ) : (
-                <main className="cards-container">
+                <main id="services-section" className="cards-container">
                     {Object.keys(services).map((service) => (
                         <div className="card" key={service}>
                             <h2>{service}</h2>
